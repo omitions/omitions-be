@@ -1,0 +1,18 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.crswap": true,
+        "**/__pycache__": true
+    },
+    "editor.tabSize": 4, // Set tab size to 4 spaces
+    "editor.insertSpaces": true, // Use spaces instead of tabs
+    "editor.formatOnSave": true, // Format code automatically when saving
+    "[python]": {
+        "editor.tabSize": 4,
+    },
+}
