@@ -17,7 +17,7 @@
         default.openFiles = [ "README.md" "main.py" ];
       };
       # Runs when a workspace is (re)started
-      onStart = { run-server = "python -m venv .venv && source .venv/bin/activate"; };
+      onStart = { run-server = ""; };
     };
   };
 }
