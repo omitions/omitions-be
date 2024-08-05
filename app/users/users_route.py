@@ -24,3 +24,18 @@ def logout():
 def profile():
     print(g.user)
     return users_service.profile(request)
+
+
+@users_controller.route('/forgot-password', methods=['POST'])
+def forgot_password():
+    return users_service.forgot_password(request)
+
+
+@users_controller.route('/reset-password', methods=['POST'])
+def reset_password():
+    return users_service.reset_password(request)
+
+
+@users_controller.route('/change-password', methods=['POST'])
+def change_password():
+    return users_service.change_password(request)

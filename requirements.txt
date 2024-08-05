@@ -8,3 +8,4 @@ Flask-PyMongo
 configparser
 bcrypt
 pyjwt
+flask-cors

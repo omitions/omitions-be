@@ -16,10 +16,24 @@ class Utils:
         return bcrypt.checkpw(password.encode('utf-8'), hashed_password)
 
     def parse_json(self, data):
-        jsonData = json.loads(json_util.dumps(data))
-        if 'password' in jsonData:
-            del jsonData['password']
-        if '_id' in jsonData:
-            if not isinstance(jsonData['_id'], str):
-                jsonData['_id'] = jsonData['_id']['$oid']
-        return jsonData
+        def convert_objectid_to_string(obj):
+            if isinstance(obj, dict):
+                if "$oid" in obj:
+                    return str(obj["$oid"])
+                else:
+                    return {k: convert_objectid_to_string(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_objectid_to_string(item) for item in obj]
+            else:
+                return obj
+
+        def cunsad(jsonData):
+            serialize = convert_objectid_to_string(jsonData)
+            if 'password' in serialize:
+                del serialize['password']
+            return serialize
+
+        payload = json.loads(json_util.dumps(data))
+        if not isinstance(payload, list):
+            return cunsad(payload)
+        return list(map(cunsad, payload))
