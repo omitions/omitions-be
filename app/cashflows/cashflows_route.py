@@ -18,3 +18,11 @@ def update():
 @cashflows_controller.route('/list', methods=['GET'])
 def list():
     return cashflows_service.list(request)
+
+@cashflows_controller.route('/search', methods=['GET'])
+def search():
+    return cashflows_service.list(request)
+
+@cashflows_controller.route('/calendar', methods=['GET'])
+def calendar():
+    return cashflows_service.calendar(request)
